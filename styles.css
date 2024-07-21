@@ -52,7 +52,13 @@ main {
     flex-basis: calc(50% - 2px); /* Flex-basis for the grow button to be almost twice the size */
     max-width: calc(50% - 2px); /* Ensure the button doesn't exceed 50% of container's width minus gap */
   }
-
+.item:active {
+  -moz-transform: translate(0px, 1px);
+  -webkit-transform: translate(0px, 1px);
+  -o-transform: translate(0px, 1px);
+  -ms-transform: translate(0px, 1px);
+  transform: translate(0px, 1px);
+}
   .item:hover {
     opacity: 95%;
   }
