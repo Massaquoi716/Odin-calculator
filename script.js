@@ -30,7 +30,7 @@ container.addEventListener('click', (event) => {
             } else if(appendSign === "+/-"){
                 changeSign();
             }else if(performPercent === "%"){
-                performPercent();
+                operatePercent();
             }
         }
         });
@@ -124,6 +124,7 @@ function changeSign() {
         }
     }
 
-function performPercent(){
+function operatePercent(){
     display.textContent = Number(display.textContent) / 100.00;
+    console.log(display.textContent);
 }
