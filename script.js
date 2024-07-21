@@ -100,7 +100,7 @@ container.addEventListener('click', (event) => {
                     if (curr === 0) {
                         result = 'Error'; // Handle division by zero
                     } else {
-                        result = prev / curr;
+                        result = parseFloat((prev / curr).toFixed(4));
                     }
                     
                     break;
