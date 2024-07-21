@@ -14,6 +14,8 @@ container.addEventListener('click', (event) => {
             const op = clickedButton.getAttribute('data-operator');
             const func = clickedButton.getAttribute('data-function');
             const decimalPoint = clickedButton.getAttribute('data-decimal');
+            const performPercent = clickedButton.getAttribute('data-performPercent');
+            const appendSign = clickedButton.getAttribute('data-appendSign');
 
             if (number !== null) {
                     handleNumber(number);
@@ -25,6 +27,10 @@ container.addEventListener('click', (event) => {
                     calculateResult();
             } else if(decimalPoint === "."){
                     handleDecimalPoint();
+            } else if(appendSign === "+/-"){
+                changeSign();
+            }else if(performPercent === "%"){
+                performPercent();
             }
         }
         });
@@ -91,7 +97,12 @@ container.addEventListener('click', (event) => {
                     result = prev * curr;
                     break;
                 case '/':
-                    result = prev / curr;
+                    if (curr === 0) {
+                        result = 'Error'; // Handle division by zero
+                    } else {
+                        result = prev / curr;
+                    }
+                    
                     break;
                 default:
                     return;
@@ -103,3 +114,16 @@ container.addEventListener('click', (event) => {
             operator = '';
             secondNumber = '';
     }
+
+function changeSign() {
+        let currentValue = display.textContent;
+        if (currentValue.startsWith('-')) {
+            display.textContent = currentValue.slice(1); // Remove the leading minus sign
+        } else {
+            display.textContent = '-' + currentValue; // Add a minus sign
+        }
+    }
+
+function performPercent(){
+    display.textContent = Number(display.textContent) / 100.00;
+}
